@@ -7,7 +7,7 @@ export const createPdf = async (filePath: string, options = {}, data = {}) => {
     const browser = await puppeteer.launch({protocolTimeout: 0 });
     const page = await browser.newPage();
     page.setDefaultTimeout(0);
-    console.log('createpdf');
+    console.log('createpdf2');
     
     hbs.registerHelper("ifCond", function (
         v1: any, 
@@ -62,6 +62,7 @@ export const createPdf = async (filePath: string, options = {}, data = {}) => {
 
     const buffer = await page.pdf({
       // path: 'output-abc.pdf',
+      timeout: 0,
       format: 'a4',
       printBackground: true,
       margin: {
