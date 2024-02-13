@@ -4,8 +4,10 @@ const fs = require('fs-extra')
 
 export const createPdf = async (filePath: string, options = {}, data = {}) => {
   try {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({protocolTimeout: 0 });
     const page = await browser.newPage();
+    page.setDefaultTimeout(0);
+    console.log('createpdf');
     
     hbs.registerHelper("ifCond", function (
         v1: any, 
